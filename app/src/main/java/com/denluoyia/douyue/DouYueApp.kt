@@ -11,5 +11,15 @@ class DouYueApp : Application(){
 
     override fun onCreate() {
         super.onCreate()
+        mApp = this
     }
+
+    companion object {
+        private var mApp: DouYueApp? = null
+
+        fun getApplication() : DouYueApp? {
+            return mApp
+        }
+    }
+
 }

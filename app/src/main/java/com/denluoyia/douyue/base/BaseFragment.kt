@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import butterknife.ButterKnife
+import butterknife.Unbinder
 
 /**
  * Created by denluoyia
@@ -14,6 +16,7 @@ import android.view.ViewGroup
 abstract class BaseFragment : Fragment(){
 
     val TAG : String? = this.javaClass.simpleName
+    private lateinit var unBinder : Unbinder
 
     abstract fun setLayoutContentViewId() : Int
     abstract fun doBusiness()
@@ -31,11 +34,17 @@ abstract class BaseFragment : Fragment(){
             }
         }
         mRootView = inflater.inflate(contentViewId, container, false)
+        unBinder = ButterKnife.bind(this, mRootView!!)
         return mRootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.doBusiness()
+    }
+
+    override fun onDestroyView() {
+        unBinder.unbind()
+        super.onDestroyView()
     }
 }
