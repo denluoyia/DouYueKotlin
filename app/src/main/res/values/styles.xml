@@ -10,4 +10,12 @@
         <item name="android:textColorSecondary">@color/text_second_color_primary</item>
     </style>
 
+    <!--全屏无标题透明背景窗体主题(可以有screenOrientation属性) 8.0系统windowIsTranslucent为true时不兼容携带screenOrientation属性-->
+    <style name="FullScreen" parent="AppTheme">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">true</item>
+    </style>
+
 </resources>
