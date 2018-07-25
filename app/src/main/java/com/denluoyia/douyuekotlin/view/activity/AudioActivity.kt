@@ -45,6 +45,7 @@ class AudioActivity : BaseActivity(), DetailContract.View{
 
 
     override fun setContentViewId(): Int {
+        overridePendingTransition(R.anim.translate_bottom_in, R.anim.translate_bottom_out)
         return R.layout.activity_audio
     }
 
@@ -144,6 +145,11 @@ class AudioActivity : BaseActivity(), DetailContract.View{
             })
             mHandler.postDelayed(r, 1000)
         }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, R.anim.translate_bottom_out)
     }
 
 }

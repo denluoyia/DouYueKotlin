@@ -23,6 +23,7 @@ class ArticleActivity : BaseActivity(), DetailContract.View {
     private lateinit var mHtmlParseUtil: HtmlParseUtil
 
     override fun setContentViewId(): Int {
+        overridePendingTransition(R.anim.translate_bottom_in, R.anim.translate_bottom_out)
         return R.layout.activity_article
     }
 
@@ -55,6 +56,10 @@ class ArticleActivity : BaseActivity(), DetailContract.View {
     override fun start() {
     }
 
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, R.anim.translate_bottom_out)
+    }
 
     override fun onDestroy() {
         mPresenter.detachView()
