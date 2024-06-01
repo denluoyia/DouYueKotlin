@@ -1,9 +1,10 @@
 package com.denluoyia.douyuekotlin.view.activity
 
-import android.support.v4.app.Fragment
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
+import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import butterknife.OnClick
 import com.denluoyia.douyuekotlin.R
 import com.denluoyia.douyuekotlin.base.BaseActivity
@@ -32,7 +33,7 @@ class MainActivity : BaseActivity() {
     fun onClick(view : View){
         when(view.id){
             R.id.iv_toggle -> {
-                drawerLayout.openDrawer(Gravity.START)
+                drawerLayout.openDrawer(GravityCompat.START)
             }
         }
     }

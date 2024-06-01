@@ -1,8 +1,8 @@
 package com.denluoyia.douyuekotlin.view.activity
 
 import android.annotation.SuppressLint
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager.OnPageChangeListener
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -29,8 +29,8 @@ class ImageBrowseActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     override fun doBusiness() {
-        imageUrls = intent.getStringArrayListExtra("imageUrls")
-        currImage = intent.getStringExtra("currImage")
+        imageUrls = intent.getStringArrayListExtra("imageUrls")!!
+        currImage = intent.getStringExtra("currImage").toString()
         if (imageUrls == null || imageUrls.isEmpty()) finish()
         currPosition = getClickEnterPositionAndPreDeal(currImage)
         tv_page_num_switch.text = ((currPosition + 1).toString() + "/" + imageUrls.size)
@@ -52,7 +52,7 @@ class ImageBrowseActivity : BaseActivity() {
         return 0
     }
 
-    private var mOnPageChangeListener = object : OnPageChangeListener{
+    private var mOnPageChangeListener = object : ViewPager.OnPageChangeListener {
         override fun onPageScrollStateChanged(state: Int) {
         }
 

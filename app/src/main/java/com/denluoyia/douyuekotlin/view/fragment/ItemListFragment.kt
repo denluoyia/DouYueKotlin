@@ -1,10 +1,10 @@
 package com.denluoyia.douyuekotlin.view.fragment
 
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.VERTICAL
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.denluoyia.douyuekotlin.R
 import com.denluoyia.douyuekotlin.base.BaseActivity
 import com.denluoyia.douyuekotlin.base.BaseFragment
@@ -46,13 +46,13 @@ class ItemListFragment : BaseFragment() , ItemListContract.ItemListView, SwipeRe
         swipe_refresh_layout.setColorSchemeResources(R.color.colorAccent)
         recycler_view.layoutManager = LinearLayoutManager(activity, VERTICAL, false)
         var mOnScrollListener : RecyclerView.OnScrollListener = object : RecyclerView.OnScrollListener(){
-            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 if(newState == RecyclerView.SCROLL_STATE_IDLE && !swipe_refresh_layout.isRefreshing && hasMore && (mLastVisibleItemPosition + 1 == mAdapter.itemCount)){
                     mPresenter.loadMoreData() //根据滑动到最后一项自动加载更多
                 }
             }
 
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 mLastVisibleItemPosition = (recyclerView!!.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
             }
         }

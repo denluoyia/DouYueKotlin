@@ -83,7 +83,7 @@ abstract class IRequestCallback<T> : Callback {
             mCallback = callback
         }
 
-        override fun handleMessage(msg: Message?): Boolean {
+        override fun handleMessage(msg: Message): Boolean {
             when(msg!!.what){
                 SUCCESS_CODE -> {
                     if (msg.obj != null){

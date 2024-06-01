@@ -28,8 +28,8 @@ class ArticleActivity : BaseActivity(), DetailContract.View {
     }
 
     override fun doBusiness() {
-        postId = intent.getStringExtra("id")
-        coverImgUrl = intent.getStringExtra("img_url")
+        postId = intent.getStringExtra("id").toString()
+        coverImgUrl = intent.getStringExtra("img_url").toString()
         if (postId.isNullOrEmpty()) return
         initToolbar(toolbar)
         Glide.with(this).load(coverImgUrl!!).into(iv_top_cover)

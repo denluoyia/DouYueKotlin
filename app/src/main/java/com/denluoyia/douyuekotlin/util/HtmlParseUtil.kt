@@ -88,7 +88,7 @@ class HtmlParseUtil {
     }
 
     private inner class InnerHandler : Handler(){
-        override fun handleMessage(msg: Message?) {
+        override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
             parseDocument(mDoc)
         }

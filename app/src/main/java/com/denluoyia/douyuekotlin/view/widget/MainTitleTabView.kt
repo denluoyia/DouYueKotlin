@@ -2,7 +2,7 @@ package com.denluoyia.douyuekotlin.view.widget
 
 import android.content.Context
 import android.graphics.Color
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
